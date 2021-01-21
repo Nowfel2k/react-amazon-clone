@@ -32,8 +32,7 @@ function Payment() {
         method: "post",
         // Stripe expects the total in a currencies subunits... if $10 then 1000cents
         url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
-      });
-      setClientSecret(response.data.clientSecret);
+      }).then((res) => setClientSecret(response.data.clientSecret));
     };
 
     getClientSecret(); // the way to run async function
